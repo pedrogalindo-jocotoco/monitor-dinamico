@@ -80,7 +80,7 @@
 
   <script>
     // OJO: ruta relativa, MISMO ORIGEN
-    const RAW_URL = "enlace.txt";
+    const RAW_URL = "enlaces.txt";
 
     async function cargarEnlace() {
       const status = document.getElementById("status");
@@ -91,14 +91,14 @@
 
         const resp = await fetch(RAW_URL, { cache: "no-store" });
         if (!resp.ok) {
-          throw new Error("No se pudo leer enlace.txt (" + resp.status + ")");
+          throw new Error("No se pudo leer enlaces.txt (" + resp.status + ")");
         }
 
         let text = await resp.text();
         let url = text.trim().split(/\s+/)[0];
 
         if (!url || !url.startsWith("http")) {
-          throw new Error("El contenido de enlace.txt no parece una URL válida");
+          throw new Error("El contenido de enlaces.txt no parece una URL válida");
         }
 
         link.href = url;
